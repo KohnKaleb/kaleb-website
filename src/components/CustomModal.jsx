@@ -1,25 +1,28 @@
 import Modal from 'react-bootstrap/Modal';
 import { Pie, XAxis, Legend, LineChart, Line, ResponsiveContainer, PieChart, Tooltip, Cell } from 'recharts';
+import { useTheme } from '../context/ThemeContext.jsx';
 
-const CustomModal = ({ modalHeading, modalBody, showModal, setShowModal, toggleLight, pieData, barData }) => {
+const CustomModal = ({ modalHeading, modalBody, showModal, setShowModal, pieData, barData }) => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const { theme, currentTheme } = useTheme();
+  
   return (
     <Modal
       size="lg"
       show={showModal}
-      data-bs-theme={toggleLight === "light" ? "light" : "dark"}
+      data-bs-theme={theme}
       onHide={() => setShowModal(false)}
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title
-          style={{ color: toggleLight === "light" ? "black" : "white" }}
+          style={{ color: currentTheme.textColor }}
         >
           {modalHeading}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
-        style={{ color: toggleLight === "light" ? "black" : "white" }}
+        style={{ color: currentTheme.textColor }}
       >
         <h2>
           Lines of Code: {modalBody}

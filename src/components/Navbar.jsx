@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../context/ThemeContext.jsx';
 import '../scss/Navbar.scss';
 
 const Section = styled.div`
@@ -53,12 +54,14 @@ const Container = styled.div`
     }
 `;
 
-const Navbar = ({ toggleLight }) => {
+const Navbar = () => {
+    const { isLight } = useTheme();
+    
     return (
         <Section>
             <Container>
                 <Links>
-                    <List className={toggleLight === "light" ? "nav nav-underline nav-light" : "nav nav-underline"}>
+                    <List className={isLight ? "nav nav-underline nav-light" : "nav nav-underline"}>
                         <ListItem className="nav-item">
                             <AElements className="nav-link" href="#home">Home</AElements>
                         </ListItem>

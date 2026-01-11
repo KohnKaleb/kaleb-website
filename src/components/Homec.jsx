@@ -1,13 +1,8 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Navbar from './Navbar';
 import TypeWriter from 'typewriter-effect';
-import f22 from '../images/f22.png';
-import moon from '../images/moon.png';
-import sun from '../images/sun.png';
-import space from '../images/space.jpeg';
-import sky from '../images/sky.png';
-import orion from '../images/orion.png';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 const Section = styled.div`
     height: 100%;
@@ -109,31 +104,16 @@ z-index: 5000;
   margin: 0;
 `;
 
-const Home = ({setToggleLight, setBackground, toggleLight }) => {
-    const [icon, setIcon] = React.useState(moon)
-    const [aircraft, setAircraft] = React.useState(f22)
-
-    const toggleDark = useCallback(() => {
-        if (icon === moon) {
-            setIcon(sun);
-            setAircraft(orion);
-            setToggleLight("dark");
-            setBackground(space);
-        } else {
-            setIcon(moon);
-            setToggleLight("light");
-            setAircraft(f22);
-            setBackground(sky);
-        }
-    }, [icon, setToggleLight, setBackground]);
+const Home = () => {
+    const { currentTheme, toggleTheme } = useTheme();
 
     return (
         <Section id="home">
-            <Navbar toggleLight={toggleLight} />
+            <Navbar />
             <Container>
                 <TopCorner>
-                    <PlainButton onClick={toggleDark}>
-                        <Icon src={icon} alt=""/>
+                    <PlainButton onClick={toggleTheme}>
+                        <Icon src={currentTheme.icon} alt=""/>
                     </PlainButton>
                 </TopCorner>
                 <Left>
@@ -158,7 +138,7 @@ const Home = ({setToggleLight, setBackground, toggleLight }) => {
                     />
                 </Left>
                 <Right>
-                    <Img src={aircraft}/>
+                    <Img src={currentTheme.aircraft}/>
                 </Right>  
             </Container>
         </Section>

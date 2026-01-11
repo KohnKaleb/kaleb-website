@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import About from "./components/Aboutc.jsx";
 import Contact from "./components/Contactc.jsx";
 import Home from "./components/Homec.jsx";
 import Projects from "./components/Projectsc.jsx";
-import sky from "./images/sky.png";
 import Resume from "./components/Resume.jsx";
+import { ThemeProvider, useTheme } from "./context/ThemeContext.jsx";
 
 const Container = styled.div`
   height: 100vh;
@@ -27,9 +27,8 @@ const Container = styled.div`
   }
 `;
 
-function App() {
-  const [toggleLight, setToggleLight] = useState("light");
-  const [background, setBackground] = useState(sky);
+function AppContent() {
+  const { currentTheme, theme } = useTheme();
 
   useEffect(() => {
     const container = document.getElementById("container");
@@ -54,23 +53,26 @@ function App() {
   return (
     <Container
       id="container"
-      data-bs-theme={toggleLight}
+      data-bs-theme={theme}
       style={{
-        color: toggleLight === "light" ? "black" : "#DEE2E6",
-        backgroundImage: `url(${background})`,
+        color: currentTheme.textColor,
+        backgroundImage: `url(${currentTheme.background})`,
       }}
     >
-      <Home
-        toggleLight={toggleLight}
-        setToggleLight={setToggleLight}
-        background={background}
-        setBackground={setBackground}
-      />
-      <About toggleLight={toggleLight} />
-      <Projects toggleLight={toggleLight} />
-      <Resume toggleLight={toggleLight} />
-      <Contact toggleLight={toggleLight} setToggleLight={setToggleLight} />
+      <Home />
+      <About />
+      <Projects />
+      <Resume />
+      <Contact />
     </Container>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

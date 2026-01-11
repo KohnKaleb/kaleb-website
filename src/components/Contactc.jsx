@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import Navbar from "./Navbar";
 import { FaLinkedin, FaGithub, FaDiscord } from "react-icons/fa";
 import toast, { Toaster } from 'react-hot-toast';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 const GithubLogo = styled(FaGithub)`
   &:hover {
@@ -89,8 +90,9 @@ const Icons = styled.div`
   gap: 15px;
 `;
 
-const Contact = ({toggleLight}) => {
+const Contact = () => {
   const form = useRef();
+  const { currentTheme } = useTheme();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -124,7 +126,7 @@ const Contact = ({toggleLight}) => {
 
   return (
     <Section id="contact">
-      <Navbar toggleLight={toggleLight} />
+      <Navbar />
       <Container>
         <Top>
           <div style={{fontSize: "17px"}}>Follow me on socials</div>
@@ -134,21 +136,21 @@ const Contact = ({toggleLight}) => {
               rel="noreferrer"
               href="https://github.com/KohnKaleb"
             >
-              <GithubLogo style={{ fontSize: '4em', color: toggleLight === "light" ? "white" : "rgb(110,168,254)" }} />
+              <GithubLogo style={{ fontSize: '4em', color: currentTheme.linkColor }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://www.linkedin.com/in/kaleb-kohn-2a1b3622b/"
             >
-              <LinkedinLogo style={{ fontSize: '4em', color: toggleLight === "light" ? "white" : "rgb(110,168,254)" }} />
+              <LinkedinLogo style={{ fontSize: '4em', color: currentTheme.linkColor }} />
             </a>
             <a
               target="_blank"
               rel="noreferrer"
               href="https://discordapp.com/users/7071"
             >
-              <DiscordLogo style={{ fontSize: '4em', color: toggleLight === "light" ? "white" : "rgb(110,168,254)" }} />
+              <DiscordLogo style={{ fontSize: '4em', color: currentTheme.linkColor }} />
             </a>
           </Icons>
         </Top>

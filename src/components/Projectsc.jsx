@@ -49,7 +49,7 @@ const NavStyle = {
   zIndex: 2000
 }
 
-const Projects = ({toggleLight}) => {
+const Projects = () => {
     const [showModal, setShowModal] = useState(false);
     const [projectHead, setProjectHead] = useState("");
     const [pieData, setPieData] = useState([]);
@@ -89,8 +89,8 @@ const Projects = ({toggleLight}) => {
 
     return (
       <Section id="projects">
-          <Navbar toggleLight={toggleLight} style={NavStyle} />
-        <CustomModal showModal={showModal} toggleLight={toggleLight} setShowModal={setShowModal} modalHeading={projectHead} modalBody={modalBody} pieData={pieData} barData={barData} />
+          <Navbar style={NavStyle} />
+        <CustomModal showModal={showModal} setShowModal={setShowModal} modalHeading={projectHead} modalBody={modalBody} pieData={pieData} barData={barData} />
         <Cards>
           <div onClick={projectText("Bar Hop")}>
             <Card className="card">
@@ -124,7 +124,7 @@ const Projects = ({toggleLight}) => {
                 className="card-img-top img-fluid"
                 alt="A map with various running routes"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h5 className="card-title">Run Crafter</h5>
                 <p className="card-text">
                   Website that allows runners to choose different running routes
@@ -158,7 +158,7 @@ const Projects = ({toggleLight}) => {
                 className="card-img-top img-fluid"
                 alt="A map with various running routes"
               />
-              <div class="card-body">
+              <div className="card-body">
                 <h5 className="card-title">Opening Chess Practice</h5>
                 <p className="card-text">
                   Website that lets chess practitioners practice 

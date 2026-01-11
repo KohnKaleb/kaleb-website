@@ -59,10 +59,10 @@ const Logos = styled.div`
   width: 100%;
 `;
 
-const About = ({toggleLight}) => {
+const About = () => {
   return (
     <Section id="about">
-      <Navbar toggleLight={toggleLight} />
+      <Navbar />
       <Top>
         <div>
           <Text

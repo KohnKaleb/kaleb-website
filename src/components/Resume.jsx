@@ -48,10 +48,10 @@ const ObjectContainer = styled.div`
     align-items: center;
 `;
 
-const Resume = ({toggleLight}) => {
+const Resume = () => {
     return (
         <Section id="resume">
-            <Navbar toggleLight={toggleLight}/>
+            <Navbar />
             <Container>
                 <ObjectContainer>
                     <object data={Kaleb_Resume} type="application/pdf">
