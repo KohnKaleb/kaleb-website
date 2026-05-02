@@ -5,15 +5,16 @@ import TypeWriter from 'typewriter-effect';
 import { useTheme } from '../context/ThemeContext.jsx';
 
 const Section = styled.div`
-    height: 100%;
-    scroll-snap-align: center;
+    height: 100vh;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
     @media only screen and (max-width: 768px) {
-        height: 200vh;
+        height: auto;
+        min-height: 100vh;
     }
 `;
 
@@ -86,12 +87,12 @@ const Icon = styled.img`
 
 const Img = styled.img`
     max-width: 40%;
-    max-height: auto;
+    height: auto;
     animation: ${animate} 3s infinite ease alternate;
 
     @media only screen and (max-width: 768px) {
-        width: 300px;
-        height: 300px;
+        max-width: 75%;
+        height: auto;
     }
 `;
 

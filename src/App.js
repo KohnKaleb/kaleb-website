@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useEffect } from "react";
+import React from "react";
 import About from "./components/Aboutc.jsx";
 import Contact from "./components/Contactc.jsx";
 import Home from "./components/Homec.jsx";
@@ -29,26 +29,6 @@ const Container = styled.div`
 
 function AppContent() {
   const { currentTheme, theme } = useTheme();
-
-  useEffect(() => {
-    const container = document.getElementById("container");
-
-    const handleScroll = (event) => {
-      event.preventDefault();
-      const speed = 0.5; // Adjust this value for desired scroll speed
-
-      container.scrollBy({
-        top: event.deltaY * speed,
-        behavior: "smooth",
-      });
-    };
-
-    container.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => {
-      container.removeEventListener("wheel", handleScroll);
-    };
-  }, []);
 
   return (
     <Container

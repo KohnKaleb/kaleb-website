@@ -8,41 +8,54 @@ import CustomModal from './CustomModal';
 
 
 const Section = styled.div`
-    height: 100%;
-    scroll-snap-align: center;
-    scroll-snap-type: y mandatory;
+    height: 100vh;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
 
     @media only screen and (max-width: 768px) {
-        height: 200vh;
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 20px;
     }
 `
+
 const Cards = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
-    gap: 3%;
+    flex-wrap: wrap;
+    gap: 20px;
     flex: 1;
+    padding: 20px;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+    }
 `
 
 const Card = styled.div`
     width: 18rem;
-    height: 10%;
 
     &:hover {
         box-shadow: 0 0 0 2px;
         transform: translate3d(0px, -1px, 0px);
     }
+
+    @media only screen and (max-width: 768px) {
+        width: min(18rem, 90vw);
+    }
 `
 
 const CardImg = styled.img`
     object-fit: cover;
-    width: '100%';
-    height: '100%';
+    width: 100%;
+    height: 125px;
 `
 
 const NavStyle = {
@@ -96,8 +109,7 @@ const Projects = () => {
             <Card className="card">
               <CardImg
                 src={BarHop}
-                style={{ height: "125px" }}
-                className="card-img-top img-fluid"
+                className="card-img-top"
                 alt="The login page of a mobile application"
               />
               <div className="card-body">
@@ -121,7 +133,7 @@ const Projects = () => {
             <Card className="card">
               <CardImg
                 src={RunCrafter}
-                className="card-img-top img-fluid"
+                className="card-img-top"
                 alt="A map with various running routes"
               />
               <div className="card-body">
@@ -155,8 +167,8 @@ const Projects = () => {
             <Card className="card">
               <CardImg
                 src={OpeningChessPractice}
-                className="card-img-top img-fluid"
-                alt="A map with various running routes"
+                className="card-img-top"
+                alt="A chess board showing an opening position"
               />
               <div className="card-body">
                 <h5 className="card-title">Opening Chess Practice</h5>

@@ -4,30 +4,19 @@ import Kaleb_Resume from '../images/KalebResume.pdf';
 import Navbar from './Navbar';
 
 const Section = styled.div`
-    height: 100%;
-    scroll-snap-align: center;
+    height: 100vh;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;  
-
-    @media (min-width: 768px) {
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-        transition: scroll-snap-align 0.5s ease-in-out;
-    }
+    justify-content: space-between;
 
     object {
-        width: 30%;
-        max-width: 50%;
+        width: min(850px, 90vw);
         height: 100%;
 
-        @media (min-width: 768px) {
-            width: 35%;
-        }
-
-        @media (min-width: 1024px) {
-            width: 30%;
+        @media (max-width: 768px) {
+            width: 95vw;
         }
     }
 `;

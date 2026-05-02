@@ -26,14 +26,15 @@ const DiscordLogo = styled(FaDiscord)`
 
 const Section = styled.div`
   height: 100vh;
-  scroll-snap-align: center;
-  scroll-snap-type: y mandatory;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media only screen and (max-width: 768px) {
-      height: 200vh;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 30px;
   }
 `;
 const Container = styled.div`
@@ -60,19 +61,20 @@ const Bottom = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: clamp(20px, 5vh, 80px);
+  width: 100%;
 
   form {
-    width: 200%;
+    width: min(480px, 90vw);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    align-items: stretch;
+    gap: 12px;
   }
 
   input {
     width: 100%;
-    height: 30px;
+    height: 36px;
     overflow-wrap: break-word;
   }
 
@@ -129,7 +131,7 @@ const Contact = () => {
       <Navbar />
       <Container>
         <Top>
-          <div style={{fontSize: "17px"}}>Follow me on socials</div>
+          <div style={{fontSize: "clamp(14px, 2vw, 17px)"}}>Follow me on socials</div>
           <Icons>
             <a
               target="_blank"
@@ -155,12 +157,12 @@ const Contact = () => {
           </Icons>
         </Top>
         <Bottom>
-          <div style={{fontSize: "17px"}}>Reach out to me</div>
+          <div style={{fontSize: "clamp(14px, 2vw, 17px)"}}>Reach out to me</div>
           <form ref={form} onSubmit={sendEmail}>
-            <input id="name" type="text" name="from_name" placeholder="name" class="form-control" required/>
-            <input id="email" type="text" name="email" placeholder="email" class="form-control" required/>
-            <textarea id="message" type="text" name="message" placeholder="message" class="form-control" required/>
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <input id="name" type="text" name="from_name" placeholder="name" className="form-control" required/>
+            <input id="email" type="email" name="email" placeholder="email" className="form-control" required/>
+            <textarea id="message" name="message" placeholder="message" className="form-control" required/>
+            <button type="submit" className="btn btn-secondary">Submit</button>
           </form>
           <Toaster />
         </Bottom>

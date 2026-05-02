@@ -11,16 +11,15 @@ import { OrbitControls, Stage } from '@react-three/drei';
 
 const Section = styled.div`
   height: 100vh;
-  scroll-snap-align: center;
-  scroll-snap-type: y mandatory;
+  scroll-snap-align: start;
   display: flex;
-  position: sticky;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
-    height: 200vh;
+    height: auto;
+    min-height: 100vh;
   }
 `;
 
@@ -29,9 +28,11 @@ const Top = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 150vh;
+  width: 100%;
+  max-width: min(800px, 92vw);
   margin: 0 auto;
-  height: 50vh;
+  padding-top: 10px;
+  flex: 1;
 `;
 
 const Text = styled.div`
@@ -42,13 +43,20 @@ const Bottom = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 30vh;
   width: 100%;
+  padding-bottom: 10px;
 `;
 
 const BottomText = styled.div`
   margin-right: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 0 10px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 14px;
+    margin-right: 0;
+  }
 `;
 
 const BoldText = styled.span`
@@ -72,7 +80,7 @@ const About = () => {
           >
             <div className="carousel-inner" role="listbox">
               <div className="carousel-item active text-center p-4">
-                <p style={{ fontSize: "20px" }}>
+                <p className="carousel-text">
                   {" "}
                   I've been coding for over four years dabbling in mobile
                   development, full stack development, AI and data science. I'm
@@ -80,7 +88,7 @@ const About = () => {
                 </p>
               </div>
               <div className="carousel-item text-center p-4">
-                <p style={{ fontSize: "20px" }}>
+                <p className="carousel-text">
                   Through my studies I have gained experience in various
                   languages and frameworks and have gotten the opportunity to
                   work on a variety of projects ranging from web development to
@@ -88,7 +96,7 @@ const About = () => {
                 </p>
               </div>
               <div className="carousel-item text-center p-4">
-                <p style={{ fontSize: "20px" }}>
+                <p className="carousel-text">
                   {" "}
                   I am also a member of the Wisconsin Air National Guard and act
                   as a maintenance analyst, tracking maintenance trends,
@@ -97,7 +105,7 @@ const About = () => {
                 </p>
               </div>
               <div className="carousel-item text-center p-4">
-                <p style={{ fontSize: "20px" }}>
+                <p className="carousel-text">
                   {" "}
                   My Air Force experience has given me the opportunity to work
                   with a variety of people and has taught me the importance of
@@ -109,7 +117,6 @@ const About = () => {
               </div>
             </div>
             <a
-              style={{ left: "-100px" }}
               className="carousel-control-prev"
               href="#carouselContent"
               role="button"
@@ -122,7 +129,6 @@ const About = () => {
               <span className="visually-hidden">Previous</span>
             </a>
             <a
-              style={{ right: "-100px" }}
               className="carousel-control-next"
               href="#carouselContent"
               role="button"
@@ -147,7 +153,7 @@ const About = () => {
           Node.js, Express, Android Studio
         </BottomText>
         <Logos>
-          <Canvas style={{ width: "100vw", height: "40vh"}}>
+          <Canvas style={{ width: "100%", height: "40vh" }}>
               <group scale={[2, 2, 2]}>
                 <Stage>
                   <Python
